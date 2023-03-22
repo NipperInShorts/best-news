@@ -1,3 +1,8 @@
+import { ArticleList } from "@/components/NewsList";
+
 export default function Home() {
-  return <h1>hi</h1>;
+  return (
+    /* @ts-expect-error Server Component */
+    <ArticleList />
+  );
 }
