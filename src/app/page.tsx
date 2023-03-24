@@ -1,8 +1,5 @@
-import { ArticleList } from "@/components/NewsList";
+import { NewsList } from "@/components/NewsList";
 
 export default function Home() {
-  return (
-    /* @ts-expect-error Server Component */
-    <ArticleList />
-  );
+  return <NewsList />;
 }
