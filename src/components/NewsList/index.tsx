@@ -8,7 +8,7 @@ import { useCountrySelector } from "../CountrySelect/hooks/useCountrySelector";
 
 import { useArticles } from "./hooks/useArticles";
 import { getRandomMessage } from "./helpers";
-  const res = topHeadlines;
+import { ArticleLoader } from "../ArticleSkeleton";
 
 type Props = {
   searchParams?: BaseSearchParams;
@@ -19,8 +19,7 @@ export function NewsList({ searchParams }: Props) {
 
   const { articles, loadingArticles } = useArticles({ country, searchParams });
 
-export async function ArticleList({}: Props) {
-  const articles = await getArticles();
+  if (loadingArticles) return <ArticleLoader />;
 
   return (
     <>
