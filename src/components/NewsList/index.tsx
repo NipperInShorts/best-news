@@ -22,7 +22,7 @@ export function NewsList({ searchParams }: Props) {
   if (loadingArticles) return <ArticleLoader />;
 
   return (
-    <>
+    <div className="mt-4">
       {articles.length === 0 ? (
         <>
           <div className="flex justify-center">
@@ -38,6 +38,6 @@ export function NewsList({ searchParams }: Props) {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }

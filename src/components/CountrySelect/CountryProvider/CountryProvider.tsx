@@ -8,7 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { CountryOptions } from "@/components/types";
+import { Category, CountryOptions } from "@/components/types";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export const countryOptions: CountryOptions[] = ["us", "gb"];
@@ -41,13 +41,32 @@ export default function CountryProvider({ children }: PropsWithChildren) {
   const handleSetCountry = useCallback(
     (countryToSet: CountryOptions) => {
       setCountry(countryToSet);
-      if (searchParams.has("country")) {
-        router.push(
-          `/search?query=${searchParams.get("query")}&country=${countryToSet}`,
-        );
+      // abstract this functionality out
+      // to build out router urls
+      const params: {
+        query?: string;
+        country?: CountryOptions;
+        category?: Category;
+      } = {
+        country,
+      };
+
+      if (searchParams.has("query")) {
+        params.query = searchParams.get("query")!;
       }
+
+      if (countryToSet) {
+        params.country = countryToSet;
+      }
+
+      if (searchParams.has("category")) {
+        params.category = searchParams.get("category")! as Category;
+      }
+
+      let routerParams = new URLSearchParams(params);
+      router.push(`/search?${routerParams}`);
     },
-    [router, searchParams],
+    [country, router, searchParams],
   );
 
   useEffect(() => {

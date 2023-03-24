@@ -1,3 +1,5 @@
+import { Category } from "./components/types";
+
 export const HEADLINES_URL = `https://newsapi.org/v2/top-headlines`;
 
 export const emptyNewsMessages = [
@@ -6,4 +8,14 @@ export const emptyNewsMessages = [
   "Maybe you typed something in wrong",
   "For once, things are quiet",
   "This blank screen is kinda boring huh",
+];
+
+export const newsCategories: Category[] = [
+  "business",
+  "entertainment",
+  "general",
+  "health",
+  "science",
+  "sports",
+  "technology",
 ];

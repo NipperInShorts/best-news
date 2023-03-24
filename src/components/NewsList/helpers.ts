@@ -1,7 +1,7 @@
 import { HEADLINES_URL, emptyNewsMessages } from "@/constants";
 import { SearchParams, UrlBuilder } from "./types";
 
-export function getSearchUrl({ country, searchQuery }: UrlBuilder) {
+export function getSearchUrl({ category, country, searchQuery }: UrlBuilder) {
   if (process.env.NEXT_PUBLIC_NEWS_API_KEY === undefined) {
     throw new Error("Undefined API key");
   }
@@ -10,6 +10,10 @@ export function getSearchUrl({ country, searchQuery }: UrlBuilder) {
     apiKey: process.env.NEXT_PUBLIC_NEWS_API_KEY,
     country,
   };
+
+  if (category) {
+    params.category = category;
+  }
 
   if (searchQuery) {
     params["q"] = searchQuery;

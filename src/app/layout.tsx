@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import SearchBar from "@/components/SearchBar";
 import CountryProvider from "@/components/CountrySelect/CountryProvider/CountryProvider";
 import SearchProvider from "@/components/SearchBar/SearchProvider/SearchProvider";
+import { Categories } from "@/components/Categories";
 import "./globals.css";
 
 export const metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
           <SearchProvider>
             <Header />
             <SearchBar />
+            <Categories />
             {children}
           </SearchProvider>
         </CountryProvider>

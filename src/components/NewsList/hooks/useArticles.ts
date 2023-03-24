@@ -13,6 +13,7 @@ export function useArticles({
 
   let searchCountry = searchParams?.country || country;
   let query = searchParams?.query;
+  let category = searchParams?.category;
 
   useEffect(() => {
     async function fetchArticles() {
@@ -21,6 +22,7 @@ export function useArticles({
         const result = await getArticles({
           country: searchCountry,
           searchQuery: query,
+          category,
         });
         if (!ignore) {
           setLoadingArticles(false);
@@ -38,7 +40,7 @@ export function useArticles({
     return () => {
       ignore = true;
     };
-  }, [country, query, searchCountry, searchQuery]);
+  }, [category, country, query, searchCountry, searchQuery]);
 
   return useMemo(() => {
     return {

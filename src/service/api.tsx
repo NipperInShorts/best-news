@@ -2,10 +2,11 @@ import { getSearchUrl } from "@/components/NewsList/helpers";
 import { ArticlesSearchParams } from "@/components/types";
 
 export async function getArticles({
+  category,
   country,
   searchQuery,
 }: ArticlesSearchParams) {
-  const urlToFetch = getSearchUrl({ country, searchQuery });
+  const urlToFetch = getSearchUrl({ category, country, searchQuery });
   const response = await fetch(urlToFetch);
 
   if (!response.ok) {
@@ -13,6 +14,5 @@ export async function getArticles({
   }
 
   const articles = await response.json();
-
   return articles;
 }
