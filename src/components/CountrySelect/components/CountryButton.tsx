@@ -11,11 +11,11 @@ export function CountryButton({
   option,
   selectedCountry,
 }: ButtonProps) {
-  function hanldeClick() {
+  function handleClick() {
     handleSetCountry(option);
   }
   return (
-    <button onClick={hanldeClick}>
+    <button onClick={handleClick}>
       <span
         className={`${
           selectedCountry === option ? "text-orange-500" : "text-slate-900"
