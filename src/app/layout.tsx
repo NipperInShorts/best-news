@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import SearchBar from "@/components/SearchBar";
 import CountryProvider from "@/components/CountrySelect/CountryProvider/CountryProvider";
 import SearchProvider from "@/components/SearchBar/SearchProvider/SearchProvider";
 import "./globals.css";
@@ -19,6 +20,7 @@ export default function RootLayout({
         <CountryProvider>
           <SearchProvider>
             <Header />
+            <SearchBar />
             {children}
           </SearchProvider>
         </CountryProvider>

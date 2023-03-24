@@ -2,22 +2,20 @@
 
 import React from "react";
 import { useCountrySelector } from "./hooks/useCountrySelector";
+import { CountryButton } from "./components/CountryButton";
 
 function CountrySelect() {
-  const { country, options, setCountry } = useCountrySelector();
+  const { country, options, handleSetCountry } = useCountrySelector();
 
   return (
     <div className="flex justify-center py-2">
       {options.map((option) => (
-        <button key={option} onClick={() => setCountry(option)}>
-          <span
-            className={`${
-              country === option ? "text-orange-500" : "text-slate-900"
-            } px-2 font-bold text-sm`}
-          >
-            {option}
-          </span>
-        </button>
+        <CountryButton
+          key={option}
+          option={option}
+          handleSetCountry={handleSetCountry}
+          selectedCountry={country}
+        />
       ))}
     </div>
   );
