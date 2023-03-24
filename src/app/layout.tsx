@@ -1,4 +1,6 @@
 import { Header } from "@/components/Header";
+import CountryProvider from "@/components/CountrySelect/CountryProvider/CountryProvider";
+import SearchProvider from "@/components/SearchBar/SearchProvider/SearchProvider";
 import "./globals.css";
 
 export const metadata = {
@@ -14,8 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="max-w-7xl mx-auto">
-        <Header />
-        {children}
+        <CountryProvider>
+          <SearchProvider>
+            <Header />
+            {children}
+          </SearchProvider>
+        </CountryProvider>
       </body>
     </html>
   );
